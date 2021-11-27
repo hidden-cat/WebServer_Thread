@@ -1,6 +1,6 @@
 #include "log.h"
 
-log::log() : m_count(0) {
+log::log() : m_count(0), m_log_count(1) {
     memset(m_dir_name, '\0', sizeof(m_dir_name));
     memset(m_file_name, '\0', sizeof(m_file_name));
 }
@@ -92,7 +92,8 @@ void log::write_log(int level, const char *msg) {
         else
         {
             snprintf(new_log, sizeof(new_log) - 1, "%s%s.%d", m_dir_name, \
-                m_file_name, m_count / m_log_max);
+                m_file_name, m_log_count % m_log_max);
+            m_log_count++;
         }
         m_count = 0;
         m_fp = fopen(new_log, "a");

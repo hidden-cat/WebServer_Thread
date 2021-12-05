@@ -1,6 +1,6 @@
 # WebServer_Thread
 
-一个轻量的、多线程的、linux系统下的web服务器
+一个轻量的、多线程的（线程池）、linux系统下的web服务器
 
 使用c++语言 + epoll + 线程池
 
